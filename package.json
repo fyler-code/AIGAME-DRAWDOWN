@@ -1,0 +1,54 @@
+{
+  "name": "drawdown",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run validate && tsc -b && vite build",
+    "preview": "vite preview",
+    "validate": "tsx scripts/validate-cards.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "react-router-dom": "^7",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1",
+    "@tailwindcss/vite": "^4",
+    "@types/js-yaml": "^4",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5",
+    "@vitest/coverage-v8": "^3",
+    "eslint": "^9",
+    "eslint-plugin-react-hooks": "^7",
+    "eslint-plugin-react-refresh": "^0.4",
+    "husky": "^9",
+    "js-yaml": "^4",
+    "lint-staged": "^16",
+    "prettier": "^3",
+    "tailwindcss": "^4",
+    "tsx": "^4",
+    "typescript": "^5.9",
+    "typescript-eslint": "^8",
+    "vite": "^7",
+    "vitest": "^3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{md,json,css}": "prettier --write",
+    "src/content/cards/*.yaml": "npm run validate"
+  }
+}
