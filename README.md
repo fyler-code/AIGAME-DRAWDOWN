@@ -91,3 +91,13 @@ down: { label: 不改, effect: { career: -10, spirit: 5 } }
 | 新增 `src/content/__tests__/loadCards.test.ts`  | §2.1 文件树里没有测试文件，但验收 A7 要求 `npm test` 至少 1 个测试文件通过。只做 `loadCards` 冒烟。                                                   |
 | `tsconfig.node.json` 需要 `emitDeclarationOnly` | TS 5.9 的 `tsc -b` 不允许被引用项目 `noEmit`（TS6310）。声明文件只写到 `node_modules/.tmp/`，不污染仓库。                                             |
 | 包管理器                                        | 一律 npm（环境未装 pnpm），时间线里的 pnpm 命令等价替换。                                                                                             |
+| 文件数                                          | §2.1 正文写"共 30 个文件"，但同一份文件树实际列出 39 项。按**文件树**实现，39 项全齐；另有 `package-lock.json` 与上面那个测试文件。                   |
+
+## 已知问题（需要技术负责人决策）
+
+- `npm audit`（对 npmjs registry）在 **devDependencies** 报出 2 critical + 1 high：
+  `vitest@3` 传递依赖 `tinypool <= 2.1.1`（critical）、`glob`（high）。
+  修复需要把 `vitest` 升到 4.1.11+ / 5，与 W01 §2.2.2 冻结的 `vitest ^3` 冲突，本周未擅自升级。
+  **生产依赖（`npm audit --omit=dev`）0 漏洞**，且这些包不进产物包体。
+- CI 的 PR 预览部署（W01 §2.1 未包含 workflow 之外的部分）与 §4.3 C6/C7（开 PR 看 Actions 变绿/变红）
+  需要 GitHub 远端，本地无法验证。
