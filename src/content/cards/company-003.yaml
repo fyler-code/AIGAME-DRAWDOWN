@@ -1,0 +1,17 @@
+from: work
+speaker: 行政
+text: 年会节目还差一个，今年你上不上？抽奖在节目后面。
+tags: [公司]
+weight: 10
+require:
+  weekRange: [40, 52]
+up:
+  label: 上
+  effect:
+    career: 8
+    spirit: -10
+down:
+  label: 推掉
+  effect:
+    career: -6
+    spirit: 4

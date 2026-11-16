@@ -1,0 +1,23 @@
+from: work
+speaker: 老婆
+text: 周六豆豆亲子运动会，你去不去？那天正好三季报。
+tags: [家庭]
+weight: 10
+up:
+  label: 去
+  effect:
+    family: 15
+    career: -12
+    money: -3
+    counters:
+      mealsWithFamily: 1
+down:
+  label: 不去
+  effect:
+    family: -18
+    career: 10
+    money: 5
+    flags:
+      absent: 1
+    counters:
+      promisesMade: 1

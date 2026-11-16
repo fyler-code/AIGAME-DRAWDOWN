@@ -1,0 +1,17 @@
+from: wechat
+speaker: 王哥
+text: 小陈，这单机构调研纪要，你帮我"润色"一下再发客户。
+tags: [公司]
+weight: 10
+up:
+  label: 润色
+  effect:
+    career: 12
+    spirit: -8
+    flags:
+      compliance: 1
+down:
+  label: 不改
+  effect:
+    career: -10
+    spirit: 5

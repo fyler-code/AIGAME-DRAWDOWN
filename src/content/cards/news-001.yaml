@@ -1,0 +1,14 @@
+from: news
+text: 加息 75 个基点，全球风险资产跳水。你的持仓正在被强平。
+tags: [宏观]
+weight: 8
+phase: bear
+up:
+  label: 补仓
+  effect:
+    money: -25
+down:
+  label: 割肉
+  effect:
+    money: -12
+    spirit: -6

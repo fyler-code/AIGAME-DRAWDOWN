@@ -1,0 +1,20 @@
+from: work
+speaker: 合规部
+text: 来小会议室一趟。那份调研纪要，客户投诉了。
+tags: [公司]
+weight: 10
+require:
+  flagAtLeast:
+    compliance: 1
+up:
+  label: 认了
+  effect:
+    career: -18
+    spirit: -6
+down:
+  label: 推给王哥
+  effect:
+    career: -6
+    spirit: -12
+    flags:
+      compliance: 1
