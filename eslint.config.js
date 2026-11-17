@@ -40,6 +40,16 @@ export default tseslint.config(
               group: ['@/components/*', '@/screens/*', '@/store/*', '**/components/**', '**/screens/**'],
               message: 'engine 只能依赖 types / constants / content',
             },
+            {
+              group: ['@/content', '@/content/*', '**/content/**'],
+              message: 'engine 不许直接读卡池：卡池由调用方传入',
+            },
+            {
+              group: ['@/lib/*', '@/app/*', '@/store/*'],
+              message: 'engine 只能依赖 types / constants',
+            },
+            { group: ['js-yaml'], message: 'engine 不许解析 YAML：那是 loader 的事' },
+            { group: ['node:*'], message: 'engine 必须是同构的，不许依赖 node 内置模块' },
           ],
         },
       ],

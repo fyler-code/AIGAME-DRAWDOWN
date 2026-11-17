@@ -1,31 +1,33 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2022",
     "lib": ["ES2023"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "moduleDetection": "force",
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "./node_modules/.tmp/node-types",
-    "rootDir": ".",
+    "noEmit": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "vite.config.ts",
     "scripts/**/*.ts",
-    "src/content/schema.ts",
+    "src/content/**/*.ts",
     "src/types/**/*.ts",
+    "src/constants/**/*.ts",
+    "src/engine/**/*.ts",
     "package.json"
-  ]
+  ],
+  "exclude": ["src/engine/__tests__/**", "src/content/__tests__/**", "src/store/**"]
 }
