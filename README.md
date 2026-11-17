@@ -3,8 +3,8 @@
 竖屏单手操作的轻量级人生策略游戏。你是股票交易员，每一次上滑是建仓，每一次下滑是空仓。
 金钱、精神、家庭、事业是你的四条净值曲线 —— 任意一条归零，你的这一年就清盘了。
 
-> 当前阶段：**S1 游戏内核**。引擎已在 Node 里跑通完整一局，命令行能打出 52 周逐周记录。
-> 屏幕上仍然只有五个空页面——这是对的，UI 从 S2 才开始。
+> 当前阶段：**S2 基础界面**。浏览器里已经能玩：滑卡、曲线生长、死亡、重开。
+> 视觉与手感（动效、音效、仓位、市况）留给 S3/S5，本期只求"能玩通、不崩、看得懂"。
 
 ---
 
@@ -19,6 +19,20 @@ npm run preview    # 预览构建产物
 
 路由是 **hash 路由**，直接访问 `http://localhost:5173/#/codex` 也可。
 
+## 怎么玩（S2）
+
+| 操作                                            | 行为                       |
+| ----------------------------------------------- | -------------------------- |
+| 按住卡面向上拖 ≥ 18% 高度（或速度 ≥ 0.5 px/ms） | 接受 / 做多，进入下一周    |
+| 按住卡面向下拖同上距离                          | 拒绝 / 空仓                |
+| 拖不到阈值                                      | 卡面回弹，周次不变         |
+| 点「↑」「↓」两个大按钮                          | 与上下滑等效（无障碍要求） |
+| 键盘 `↑` / `W`                                  | 接受                       |
+| 键盘 `↓` / `S`                                  | 拒绝                       |
+
+一局 52 周，任意一项属性归零立刻结束并跳到 `/#/result` 清盘页；熬满 52 周是通关。
+**连点没用**：每次结算有 320ms 的锁，1 秒里点 10 下也只前进 1 周。
+
 ## 脚本
 
 | 命令                        | 作用                                                     |
@@ -30,7 +44,7 @@ npm run preview    # 预览构建产物
 | `npm run sim`               | 机器人模拟器（见下节）                                   |
 | `npm run lint` / `lint:fix` | ESLint，含四条架构护栏                                   |
 | `npm run typecheck`         | `tsc --noEmit`（与 `build` 里的 `tsc -b` 互为补充）      |
-| `npm test` / `test:watch`   | Vitest（引擎 26 条单测 + 集成 + 内容/持久化，共 63 例）  |
+| `npm test` / `test:watch`   | Vitest（85 例：引擎 63 + 状态机 9 + 曲线 13）            |
 | `npm run test:e2e`          | Playwright（配置在 S6 补）                               |
 | `npm run format`            | Prettier                                                 |
 
@@ -71,11 +85,11 @@ src/
   types/      index.ts —— 全项目类型契约（已冻结，只允许加可选字段）
   content/    schema.ts（zod）+ loadCards.ts（浏览器）+ loadCardsNode.ts（Node 读盘）+ cards/*.yaml
   engine/     游戏内核：纯 TS，无 React / DOM / IO（S1）
-  screens/    Run / Result / Character / Codex / NotFound（只有骨架）
-  components/ 空占位（S2 起写）
-  store/      persistence.ts —— 版本化元进度存档（无 zustand）
-  styles/     tokens.css —— 颜色、间距、字体的唯一出处
-  lib/        env.ts —— 版本号与构建 hash
+  screens/    RunScreen（主界面）/ ResultScreen（清盘页 v0）/ 其余三个骨架
+  components/ RunHud · Legend · EquityChart · CardView · SwipeLayer · ActionBar（S2）
+  store/      runStore.ts 状态机（zustand）+ persistence.ts 元进度
+  styles/     tokens.css（颜色/字体/视口）+ game.css（布局，S2）
+  lib/        env.ts（版本号）+ chart.ts（曲线取点/坐标/分段，纯函数）
 scripts/      validate-cards.ts（内容校验）、simulate.ts（模拟器）、strategies.ts（贪心/随机）
 ```
 
@@ -106,6 +120,8 @@ loop: advanceWeek → drawCard(state, pool) → resolveCard(state, choice)   unt
 3. **卡池外置**：`drawCard(state, pool)`，引擎不 import `@/content`、不解析 YAML、不碰 `node:*`
 4. **本周不做**：仓位结算、flag 连锁触发卡、角色特殊规则、终局强制清算卡（S3/S4）
 5. **数值不在引擎里**：一切参数读 `constants/balance.ts`，引擎里不出现魔法数字（市场均值回归的 80/20 除外）
+
+**UI 只通过 `src/store/runStore.ts` 调这 6 个函数**，组件不直接改 `RunState`。曲线读的是 `history` + 当前实时态（衰减不写 history，见 `lib/chart.ts` 的 `buildChartPoints`）。
 
 验证引擎是否还干净：
 
@@ -159,6 +175,11 @@ down: { label: 不改, effect: { career: -10, spirit: 5 } }
 | 包管理器                                       | 一律 npm（环境未装 pnpm），时间线里的 pnpm 命令等价替换                                                                                                                                                         |
 | 文件数                                         | W01 §2.1 正文写"共 30 个文件"，文件树实际列出 39 项。按**文件树**实现                                                                                                                                           |
 | 占位卡数值做过一轮收敛                         | 首批 40 张占位卡按 §4.8 的幅度（主属性 ±5~15）收敛过，否则贪心策略 19 周必死、永远看不到 52 周。`balance.ts` 一个数没动                                                                                         |
+| 结算锁 320ms（S2）                             | W03 §2.3.3 的 `commit` 结尾直接回到 `running`，那样连点会连推好几周（B1/B2 过不了）。实现改为：结算后 `phase` 停在 `resolving`，320ms（正好是曲线生长动画）后自动放开                                           |
+| `commit` 接受 `running` 和 `swiping`（S2）     | §2.3.4 的转移表要求 `swiping --pointerup--> resolving`，但 §2.3.3 的守卫只放行 `running`。两者冲突，按转移表放行 `swiping`                                                                                      |
+| 横屏断点 640px（S2）                           | §2.7 写"≥900px 且 landscape"，但验收 D3 要求 812×375 也走两栏；改成 `(orientation: landscape) and (min-width: 640px)`。不改的话 812×375 会把卡牌压到 28px、正文看不见                                           |
+| 危险态呼吸动画未做（S2）                       | §2.6.2 要求危险态数值做 1.5 倍呼吸，§3.1 #5 又明确"不做危险态呼吸动画"。按 §3.1 优先：只做了 `!` + 危险段虚线                                                                                                   |
+| 图例 ▲▼ 用 CSS 动画（S2）                      | Legend 里 `useEffect` 里 `setState` 被 react-hooks v7 拦（`react-hooks/set-state-in-effect`）。改成 `key={history.length}` 重挂 + 1200ms CSS 淡出，效果一致且不占 JS                                            |
 
 ## 已知问题（需要技术负责人决策）
 
