@@ -1,0 +1,16 @@
+from: work
+speaker: 总监
+text: 这份PPT我明天替你讲，你把手上的数据都给我。
+tags: [公司]
+weight: 10
+up:
+  label: 给他
+  effect:
+    career: -6
+    spirit: -5
+    money: 2
+down:
+  label: 自己讲
+  effect:
+    career: 10
+    spirit: -8

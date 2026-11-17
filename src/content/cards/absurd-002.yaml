@@ -1,0 +1,15 @@
+from: family
+speaker: 算命先生
+text: 先生印堂发亮，今年必发大财，只是要防小人。
+tags: [荒诞]
+weight: 6
+up:
+  label: 给钱
+  effect:
+    money: -5
+    spirit: 6
+down:
+  label: 不信
+  effect:
+    spirit: -3
+    money: 2

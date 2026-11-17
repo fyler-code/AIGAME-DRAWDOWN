@@ -1,0 +1,18 @@
+from: work
+speaker: 医务室
+text: 你的转氨酶偏高，建议复查。项目上线前别请假。
+tags: [公司, 内心]
+weight: 8
+up:
+  label: 去查
+  effect:
+    spirit: 8
+    money: -3
+    career: -6
+down:
+  label: 再等等
+  effect:
+    career: 4
+    spirit: -10
+    flags:
+      insomnia: 1

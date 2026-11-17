@@ -1,0 +1,15 @@
+from: work
+speaker: 银行
+text: 您的房贷利率下月重定价，月供上调620元。
+tags: [家庭]
+weight: 8
+up:
+  label: 提前还
+  effect:
+    money: -15
+    spirit: 6
+down:
+  label: 先扛着
+  effect:
+    money: -4
+    spirit: -6

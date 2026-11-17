@@ -1,0 +1,16 @@
+from: work
+speaker: 人事
+text: 这份竞业协议签一下，离职两年内不能去同行。
+tags: [公司]
+weight: 8
+up:
+  label: 签
+  effect:
+    career: 6
+    money: 5
+    spirit: -4
+down:
+  label: 不签
+  effect:
+    career: -8
+    spirit: 3

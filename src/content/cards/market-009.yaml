@@ -1,0 +1,17 @@
+from: family
+speaker: 岳父
+text: 听说你现在很能赚？给你小舅子也带一带。
+tags: [市场, 家庭]
+weight: 8
+phase: bull
+up:
+  label: 答应
+  effect:
+    family: 8
+    money: -10
+    spirit: -4
+down:
+  label: 拒绝
+  effect:
+    family: -10
+    money: 3

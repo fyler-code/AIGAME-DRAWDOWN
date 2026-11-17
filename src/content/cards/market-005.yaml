@@ -1,0 +1,14 @@
+from: inner
+text: 凌晨一点，你第三次打开账户，数字没变。
+tags: [市场, 内心]
+weight: 8
+up:
+  label: 再补
+  effect:
+    money: -12
+    spirit: -6
+down:
+  label: 关掉
+  effect:
+    spirit: 5
+    family: 2

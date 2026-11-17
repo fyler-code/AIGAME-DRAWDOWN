@@ -1,0 +1,15 @@
+from: inner
+text: 你把软件删了。第九天，手指还是会在桌上点。
+tags: [市场, 内心]
+weight: 6
+once: true
+up:
+  label: 坚持
+  effect:
+    spirit: 10
+    money: -4
+down:
+  label: 装回来
+  effect:
+    money: 6
+    spirit: -10

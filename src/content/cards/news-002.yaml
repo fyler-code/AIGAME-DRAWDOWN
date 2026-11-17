@@ -1,0 +1,16 @@
+from: news
+text: 监管发文，程序化交易要报备，你的策略得停一周。
+tags: [宏观]
+weight: 8
+up:
+  label: 停一周
+  effect:
+    money: -6
+    spirit: 4
+down:
+  label: 换个户
+  effect:
+    money: 8
+    spirit: -5
+    flags:
+      compliance: 1

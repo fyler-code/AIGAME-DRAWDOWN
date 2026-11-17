@@ -1,0 +1,16 @@
+from: wechat
+speaker: 实习生
+text: 哥，转正名额只有一个，你说我该找谁聊？
+tags: [公司]
+weight: 10
+up:
+  label: 教他
+  effect:
+    career: 5
+    spirit: -4
+down:
+  label: 装忙
+  effect:
+    career: -3
+    spirit: 2
+    family: -2

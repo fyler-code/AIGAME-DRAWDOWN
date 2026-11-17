@@ -1,0 +1,18 @@
+from: wechat
+speaker: 表哥
+text: 这支票明早一字板，信我一次，我表哥在里头。
+tags: [市场]
+weight: 10
+phase: bull
+up:
+  label: 上车
+  effect:
+    money: 18
+    spirit: -8
+    flags:
+      hot_streak: 1
+down:
+  label: 不碰
+  effect:
+    spirit: 3
+    career: -3

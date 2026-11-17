@@ -1,0 +1,14 @@
+from: inner
+text: 你把仓位清了。账户空着，天也没塌。
+tags: [市场, 内心]
+weight: 8
+up:
+  label: 休息
+  effect:
+    spirit: 12
+    money: -6
+down:
+  label: 手痒
+  effect:
+    money: 8
+    spirit: -10

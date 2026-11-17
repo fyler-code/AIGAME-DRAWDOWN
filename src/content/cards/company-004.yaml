@@ -1,0 +1,16 @@
+from: work
+speaker: 组长
+text: 这周调休一天吧。手机静音，别让我看见你在群里。
+tags: [公司]
+weight: 10
+up:
+  label: 休了
+  effect:
+    spirit: 12
+    career: -4
+    money: -2
+down:
+  label: 算了
+  effect:
+    career: 4
+    spirit: -6

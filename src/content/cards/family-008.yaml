@@ -1,0 +1,16 @@
+from: inner
+text: 她已经三天没跟你说话了。客厅的灯一直亮着。
+tags: [家庭, 内心]
+weight: 8
+up:
+  label: 道歉
+  effect:
+    family: 10
+    spirit: -3
+down:
+  label: 等她先
+  effect:
+    family: -12
+    spirit: -6
+    flags:
+      absent: 1

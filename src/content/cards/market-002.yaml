@@ -1,0 +1,15 @@
+from: news
+text: 指数跌幅扩大，触发熔断，你的融资盘还在排队。
+tags: [市场]
+weight: 8
+phase: bear
+up:
+  label: 补保证金
+  effect:
+    money: -20
+    spirit: -4
+down:
+  label: 认亏
+  effect:
+    money: -14
+    spirit: -8

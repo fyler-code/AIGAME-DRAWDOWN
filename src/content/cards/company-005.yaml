@@ -1,0 +1,16 @@
+from: work
+speaker: 财务
+text: 你的季度奖金到账了，税前，比说好的少一点。
+tags: [公司]
+weight: 10
+up:
+  label: 收下
+  effect:
+    money: 12
+    career: 3
+    spirit: -4
+down:
+  label: 去问
+  effect:
+    career: 2
+    spirit: -8

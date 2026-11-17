@@ -1,0 +1,18 @@
+from: work
+speaker: 领导
+text: 明早答辩，评委是去年被你否掉方案的那位。
+tags: [公司]
+weight: 8
+require:
+  minStats:
+    career: 40
+up:
+  label: 硬上
+  effect:
+    career: 14
+    spirit: -10
+down:
+  label: 弃权
+  effect:
+    career: -8
+    spirit: 4

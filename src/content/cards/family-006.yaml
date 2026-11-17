@@ -1,0 +1,16 @@
+from: family
+speaker: 老婆
+text: 豆豆38度9，你几点能回来？
+tags: [家庭]
+weight: 10
+up:
+  label: 马上回
+  effect:
+    family: 10
+    career: -5
+down:
+  label: 你先带
+  effect:
+    family: -14
+    career: 4
+    spirit: -3

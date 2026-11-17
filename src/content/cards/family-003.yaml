@@ -1,0 +1,17 @@
+from: family
+speaker: 妈
+text: 你爸体检报告有点问题，医生让家属也来一趟。
+tags: [家庭]
+weight: 10
+up:
+  label: 请假回
+  effect:
+    family: 12
+    career: -5
+    money: -4
+down:
+  label: 转钱
+  effect:
+    family: -10
+    money: -8
+    spirit: -4

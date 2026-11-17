@@ -9,12 +9,12 @@ require:
 up:
   label: 认了
   effect:
-    career: -18
-    spirit: -6
+    career: -12
+    spirit: -4
 down:
   label: 推给王哥
   effect:
-    career: -6
-    spirit: -12
+    career: -4
+    spirit: -8
     flags:
       compliance: 1

@@ -1,0 +1,14 @@
+from: news
+text: 你重仓的那只票，公告说大股东被留置了。
+tags: [市场]
+weight: 8
+up:
+  label: 割肉
+  effect:
+    money: -18
+    spirit: 2
+down:
+  label: 拿着
+  effect:
+    money: -8
+    spirit: -12

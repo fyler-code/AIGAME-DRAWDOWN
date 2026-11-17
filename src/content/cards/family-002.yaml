@@ -1,0 +1,19 @@
+from: family
+speaker: 老师
+text: 周五家长会，豆豆的座位在最后一排靠窗。
+tags: [家庭]
+weight: 10
+up:
+  label: 我去
+  effect:
+    family: 10
+    career: -4
+    counters:
+      mealsWithFamily: 1
+down:
+  label: 让她去
+  effect:
+    family: -8
+    career: 5
+    flags:
+      absent: 1

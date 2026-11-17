@@ -1,0 +1,17 @@
+from: inner
+text: 你知道那份报表是假的。举报按钮就在内网首页。
+tags: [公司, 内心]
+weight: 6
+once: true
+up:
+  label: 举报
+  effect:
+    career: -10
+    spirit: 6
+    flags:
+      compliance: 1
+down:
+  label: 关掉
+  effect:
+    spirit: -8
+    career: 3

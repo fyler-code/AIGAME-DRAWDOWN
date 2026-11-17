@@ -1,0 +1,15 @@
+from: news
+text: 央行降准0.5个点，你的房贷和仓位同时动了。
+tags: [宏观]
+weight: 8
+phase: bull
+up:
+  label: 加仓
+  effect:
+    money: 14
+    spirit: -6
+down:
+  label: 观望
+  effect:
+    money: -3
+    spirit: 3

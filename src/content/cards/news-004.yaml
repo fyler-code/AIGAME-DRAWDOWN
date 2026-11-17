@@ -1,0 +1,15 @@
+from: news
+text: 冲突升级，油价跳涨，通胀数据周五公布。
+tags: [宏观]
+weight: 8
+phase: bear
+up:
+  label: 买原油
+  effect:
+    money: 12
+    spirit: -8
+down:
+  label: 空仓
+  effect:
+    money: -4
+    spirit: 4

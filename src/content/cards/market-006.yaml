@@ -1,0 +1,17 @@
+from: wechat
+speaker: 配资中介
+text: 五倍杠杆，日息万三，今天放款，签个字就行。
+tags: [市场]
+weight: 8
+up:
+  label: 上杠杆
+  effect:
+    money: 20
+    spirit: -12
+    flags:
+      hot_streak: 1
+down:
+  label: 不需要
+  effect:
+    money: -4
+    spirit: 4

@@ -1,0 +1,19 @@
+from: work
+speaker: 客户
+text: 我要赎回，全部。你们这产品三个月跌了18%。
+tags: [市场]
+weight: 8
+require:
+  maxStats:
+    money: 50
+up:
+  label: 挽留
+  effect:
+    career: 6
+    spirit: -8
+    money: -6
+down:
+  label: 放他走
+  effect:
+    career: -8
+    money: 4

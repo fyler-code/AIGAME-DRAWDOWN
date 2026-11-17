@@ -1,0 +1,15 @@
+from: work
+speaker: 秘书
+text: 下午三点对齐会，议题是下次对齐会的时间。
+tags: [公司, 荒诞]
+weight: 10
+up:
+  label: 去开会
+  effect:
+    career: 4
+    spirit: -8
+down:
+  label: 请假
+  effect:
+    career: -5
+    family: 3

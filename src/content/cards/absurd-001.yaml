@@ -1,0 +1,14 @@
+from: inner
+text: 凌晨三点，你梦到K线变成一条蛇，缠住了脖子。
+tags: [荒诞, 内心]
+weight: 6
+up:
+  label: 醒了
+  effect:
+    spirit: -5
+    family: 3
+down:
+  label: 继续睡
+  effect:
+    spirit: 8
+    career: -4

@@ -9,9 +9,9 @@ up:
   label: 上
   effect:
     career: 8
-    spirit: -10
+    spirit: -8
 down:
   label: 推掉
   effect:
-    career: -6
-    spirit: 4
+    career: -4
+    spirit: 2

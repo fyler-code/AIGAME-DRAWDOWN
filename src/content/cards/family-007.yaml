@@ -1,0 +1,17 @@
+from: family
+speaker: 老婆
+text: 周末去露营吧，信号不好，正好没人找你。
+tags: [家庭]
+weight: 10
+up:
+  label: 去
+  effect:
+    family: 12
+    spirit: 8
+    career: -5
+down:
+  label: 加班
+  effect:
+    career: 7
+    family: -8
+    spirit: -3

@@ -1,0 +1,16 @@
+from: wechat
+speaker: 老王
+text: 听说下个月裁三成，你那个组在名单上。
+tags: [公司]
+weight: 10
+up:
+  label: 找下家
+  effect:
+    career: 8
+    spirit: -6
+    money: -3
+down:
+  label: 先干活
+  effect:
+    career: -4
+    spirit: 3

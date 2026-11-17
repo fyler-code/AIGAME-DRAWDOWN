@@ -1,0 +1,18 @@
+from: family
+speaker: 老婆
+text: 今天几号？算了，你忙。
+tags: [家庭]
+weight: 10
+up:
+  label: 请假
+  effect:
+    family: 8
+    career: -4
+    money: -4
+down:
+  label: 加完班
+  effect:
+    family: -12
+    career: 6
+    counters:
+      promisesMade: 1

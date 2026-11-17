@@ -1,0 +1,17 @@
+from: wechat
+speaker: 隔壁工位
+text: 哥，这票下周有大消息，我表哥在里面。
+tags: [市场]
+weight: 10
+up:
+  label: 建仓
+  effect:
+    money: 12
+    spirit: -6
+    flags:
+      compliance: 1
+down:
+  label: 不碰
+  effect:
+    spirit: 3
+    career: -3

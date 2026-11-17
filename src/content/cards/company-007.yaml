@@ -1,0 +1,17 @@
+from: wechat
+speaker: 小赵
+text: 哥，周转一下，五万，下个月发了项目奖就还你。
+tags: [公司]
+weight: 8
+up:
+  label: 借他
+  effect:
+    money: -12
+    career: 4
+    spirit: -2
+down:
+  label: 哭穷
+  effect:
+    money: 3
+    career: -6
+    spirit: -5
