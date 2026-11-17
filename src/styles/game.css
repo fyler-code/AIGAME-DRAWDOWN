@@ -1,0 +1,421 @@
+/* S2 布局：结构骨架，视觉打磨在 S5。类名统一 g- 前缀 */
+
+html,
+body,
+#root {
+  overflow: hidden;
+}
+
+.g-root {
+  box-sizing: border-box;
+  height: 100dvh;
+  padding-top: var(--spacing-safe-t);
+  padding-bottom: var(--spacing-safe-b);
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.g-root--center {
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-inline: 24px;
+  text-align: center;
+}
+
+/* ============ 顶部状态条 ============ */
+
+.g-hud {
+  flex: none;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+  font-size: 12px;
+  color: var(--color-text-dim);
+}
+
+.g-hud-week {
+  color: var(--color-text);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.g-hud-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.g-hud-dot {
+  color: var(--color-down);
+  font-size: 9px;
+}
+
+.g-hud-state--over .g-hud-dot {
+  color: var(--color-text-dim);
+}
+
+/* ============ 图表区 ============ */
+
+.g-chart-wrap {
+  position: relative;
+  flex: none;
+  height: clamp(200px, 32dvh, 260px);
+  margin-inline: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.g-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.g-chart-grid line {
+  stroke: var(--color-grid);
+  stroke-width: 1;
+}
+
+.g-chart-grid line.g-chart-grid-v {
+  opacity: 0.5;
+}
+
+.g-chart-threshold {
+  stroke: var(--color-text-dim);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+  opacity: 0.4;
+}
+
+.g-chart-now {
+  stroke: var(--color-text);
+  stroke-width: 1;
+  opacity: 0.15;
+}
+
+.g-chart-area {
+  stroke: none;
+  opacity: 0.12;
+}
+
+/* ============ 图例（浮在曲线左上角） ============ */
+
+.g-legend {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0 14px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+}
+
+.g-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  color: var(--color-text-dim);
+}
+
+.g-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.g-legend-name {
+  font-size: 10px;
+}
+
+.g-legend-value {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
+.g-legend-item--danger .g-legend-value {
+  color: var(--color-danger);
+}
+
+.g-legend-delta {
+  font-size: 10px;
+  line-height: 1;
+  animation: g-delta-flash 1200ms ease-out forwards;
+}
+
+@keyframes g-delta-flash {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.g-legend-delta--up {
+  color: var(--color-up);
+}
+
+.g-legend-delta--down {
+  color: var(--color-down);
+}
+
+/* ============ 卡牌与手势区 ============ */
+
+.g-play {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 12px 12px;
+}
+
+.g-swipe {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.g-swipe-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  will-change: transform;
+}
+
+.g-card {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px 12px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.g-card-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+}
+
+.g-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.g-card-src {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.g-card-speaker {
+  color: var(--color-text-dim);
+}
+
+.g-card-text {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.g-card-impact {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 12px;
+}
+
+.g-impact--up {
+  color: var(--color-up);
+}
+
+.g-impact--down {
+  color: var(--color-down);
+}
+
+/* inner 来源：黑底居中，无标签无头像 */
+.g-card--inner {
+  background: var(--color-bg);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.g-card--inner .g-card-text {
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+/* ============ 操作区 ============ */
+
+.g-actions {
+  flex: none;
+  display: flex;
+  gap: 12px;
+  height: 96px;
+}
+
+.g-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.g-btn--up {
+  border-color: color-mix(in srgb, var(--color-money) 55%, transparent);
+  color: var(--color-money);
+}
+
+.g-btn--down {
+  color: var(--color-text-dim);
+}
+
+.g-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.g-btn--wide {
+  height: 48px;
+}
+
+/* ============ 清盘页 ============ */
+
+.g-result-title {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.g-result-sub {
+  margin: 0;
+  max-width: 30em;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-text-dim);
+  white-space: pre-wrap;
+}
+
+.g-result-week {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-dim);
+}
+
+.g-result-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 28px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.g-result-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--color-text-dim);
+}
+
+.g-result-stat dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.g-result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(320px, 100%);
+  margin-top: 8px;
+}
+
+/* ============ 响应式：横屏 / 桌面两栏 ============ */
+
+@media (orientation: landscape) and (min-width: 640px) {
+  .g-root {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    grid-template-rows: 32px minmax(0, 1fr);
+    column-gap: 16px;
+    padding-inline: 16px;
+  }
+
+  .g-hud {
+    grid-column: 1 / -1;
+    padding-inline: 0;
+  }
+
+  .g-chart-wrap {
+    height: auto;
+    margin: 0;
+  }
+
+  .g-play {
+    padding: 8px 0 12px;
+  }
+
+  .g-card {
+    max-height: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .g-play {
+    width: 100%;
+    max-width: 420px;
+    justify-self: end;
+  }
+}

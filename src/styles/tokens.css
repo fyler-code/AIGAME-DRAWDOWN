@@ -31,6 +31,17 @@
   --font-sans:
     -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
   --font-mono: ui-monospace, 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* 卡牌来源色（仅用于左侧色条与标签，不承担数据语义） */
+  --color-src-wechat: #3eb575;
+  --color-src-work: #4a7fd4;
+  --color-src-family: #d98a4a;
+  --color-src-news: #c0392b;
+  --color-src-inner: #6b7280;
+
+  /* 图表 */
+  --color-grid: #1c2229;
+  --color-threshold: #4a535e;
 }
 
 :root {
