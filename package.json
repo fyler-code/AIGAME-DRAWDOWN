@@ -22,7 +22,8 @@
     "react": "^19",
     "react-dom": "^19",
     "react-router-dom": "^7",
-    "zod": "^4"
+    "zod": "^4",
+    "zustand": "^5.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1",
